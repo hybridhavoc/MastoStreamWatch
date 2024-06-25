@@ -1,0 +1,7 @@
+{
+    "access-token": "[access token, needs the following permissions: read:statuses, write:reports]",
+    "server": "[instance.domain]",
+    "regex-file": "[name for a file containing regex strings, one per line. sample provided.]",
+    "log-directory": "logs",
+    "logging-level": "debug"
+}
