@@ -61,11 +61,14 @@ def submit_report(server,access_token,payload):
         "forward": "false"
     }
     report_url = f"https://{server}/api/v1/reports"
-    report_resp = requests.post(report_url, headers={"Authorization": f"Bearer {access_token}"}, json=report_json, timeout=30)
+    report_resp = requests.post(report_url, headers={"User-Agent":user_agent(),"Authorization": f"Bearer {access_token}"}, json=report_json, timeout=30)
     if report_resp.status_code == 200:
         pl("info",f"{account['id']} : Report filed")
     else:
         pl("error",f"{account['id']} : Problem submitting report. Status code: {report_resp.status_code}")
+
+def user_agent():
+    return f"MastoStreamWatch; +{arguments.server}"
 
 def pl(level,message):
     match level:
