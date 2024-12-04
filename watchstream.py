@@ -42,7 +42,7 @@ def regex_check(arguments, payload):
 
     # Perform check
     for r in regexes:
-        if re.search(f"({r})", content):
+        if re.search(f"({r})", content, flags=re.DOTALL|re.IGNORECASE):
             # Regex match found, submitting report
             pl("info", f"{account["id"]} : {contentId} : Regex check found: {r}")
             submit_report(arguments.server, arguments.access_token, payload)
